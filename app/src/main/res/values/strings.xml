@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RecuperacionUD2</string>
+    <string name="search">search</string>
+    <string name="Busqueda_en_swapi" />
+    <string name="SWAPI_url_here" />
+    <string name="error_message" />
 </resources>

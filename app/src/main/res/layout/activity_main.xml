@@ -10,7 +10,7 @@
         android:id="@+id/search_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/what_are_you_looking_for"/>
+        android:hint="@string/Busqueda_en_swapi"/>
 
     <TextView
         android:id="@+id/url_display"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:layout_marginTop="8dp"
-        android:text="@string/github_url_here"/>
+        android:text="@string/SWAPI_url_here"/>
 
     <FrameLayout
         android:layout_width="match_parent"
