@@ -17,6 +17,7 @@ public class NetworkUtils {
         Uri builder = null;
         if (!swSearch.isEmpty()) {
             builder = Uri.parse(SWAPI_BASE_URL).buildUpon()
+                    .appendPath(SHOW_ALL_PLANETS)
                     .appendPath(swSearch)
                     .build();
         } else {
@@ -38,7 +39,7 @@ public class NetworkUtils {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         InputStream is = urlConnection.getInputStream();
         Scanner scan = new Scanner(is);
-        scan.useDelimiter("\\A");
+        //scan.useDelimiter("\\A");
         try {
             if (scan.hasNext()) {
                 return scan.next();

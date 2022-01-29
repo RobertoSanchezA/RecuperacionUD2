@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/search_box"
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Busqueda_en_swapi"/>
@@ -45,5 +45,6 @@
             android:layout_gravity="center"
             android:layout_width="54dp"
             android:layout_height="54dp" />
+
     </FrameLayout>
 </LinearLayout>
