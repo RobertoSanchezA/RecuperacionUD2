@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
     RepoAdapter adapter;
 
     Toast clickToast;
-
     @Override
     public void onListItemClick(int clickedItemIndex) {
         String toastMessage = "Se ha pulsado sobre " + clickedItemIndex;
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
         clickToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
         clickToast.show();
     }
-
     public class SWQueryTask extends AsyncTask<URL, Void, String> {
 
         @Override
@@ -66,14 +64,14 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             return SWSearchResolve;
         }
 
         @Override
         protected void onPostExecute(String s) {
             requestProgress.setVisibility(View.INVISIBLE);
-            if (s != null && !s.equals("")) {
+            Log.i("error", "texto " + s);
+            if (s != null) {
                 try {
                     PlanetEntity[] parsedApiOutput = PlanetsJsonUtils.parseJson(s);
                     adapter.setRepoData(parsedApiOutput);
@@ -102,11 +100,14 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
 
             URL swUrl = NetworkUtils.buildUrl(searchBox.getText().toString());
             urlDisplay.setText(swUrl.toString());
+
             Log.e("a", swUrl.toString());
             new SWQueryTask().execute(swUrl);
+
         }
         if (itemId == R.id.clear) {
             urlDisplay.setText("");
+            errorDisplay.setVisibility(View.INVISIBLE);
         }
         return true;
     }
@@ -114,17 +115,18 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
     private void showJsonData() {
         //errorDisplay.setVisibility(View.INVISIBLE);
         searchResults.setVisibility(View.VISIBLE);
+        Log.e("resultado", searchResults.toString());
     }
     private void showErrorMessage() {
         //searchResults.setVisibility(View.INVISIBLE);
-        //errorDisplay.setVisibility(View.VISIBLE);
+        errorDisplay.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchBox = (EditText)findViewById(R.id.search);
+        searchBox = (EditText)findViewById(R.id.search_box);
         urlDisplay = (TextView) findViewById(R.id.url_display);
         searchResults = (TextView) findViewById(R.id.sw_search_results);
         errorDisplay = (TextView) findViewById(R.id.error_display);

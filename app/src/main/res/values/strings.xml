@@ -6,4 +6,5 @@
     <string name="Busqueda_en_swapi" > Buscar aqui </string>
     <string name="SWAPI_url_here" > URL de la API </string>
     <string name="error_message" > error </string>
+    <string name="respuesta_de_la_api">respuesta de la api</string>
 </resources>

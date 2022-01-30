@@ -61,22 +61,23 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
     class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView repoName;
-        TextView repoComment;
-        TextView repoStars;
+        TextView name;
+        TextView gravity;
+        TextView terrain;
 
         public RepoViewHolder(@NonNull View itemView) {
             super(itemView);
-            repoName = (TextView) itemView.findViewById(R.id.planetname);
-            //repoComment = (TextView) itemView.findViewById(R.id.repo_comment);
-            //repoStars = (TextView) itemView.findViewById(R.id.repo_stars);
+            name = (TextView) itemView.findViewById(R.id.planetname);
+            gravity = (TextView) itemView.findViewById(R.id.planet_gravity);
+            terrain = (TextView) itemView.findViewById(R.id.planet_terrain);
             itemView.setOnClickListener(this);
         }
 
-        void bind(PlanetEntity repository) {
+        void bind(PlanetEntity planet) {
 
-            repoName.setText(repository.fullname);
-            //repoComment.setText((repository.description));
+            name.setText(planet.name);
+            gravity.setText((planet.gravity));
+            terrain.setText(planet.terrain);
         }
 
         @Override

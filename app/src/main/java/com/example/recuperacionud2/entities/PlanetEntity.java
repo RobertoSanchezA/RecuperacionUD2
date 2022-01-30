@@ -3,15 +3,13 @@ package com.example.recuperacionud2.entities;
 public class PlanetEntity {
 
         public String name;
-        public String fullname;
-        public String url;
-        public String description;
+        public String gravity;
+        public String terrain;
 
-    public PlanetEntity(String name, String fullname, String url, String description) {
+    public PlanetEntity(String name, String gravity, String terrain) {
         this.name = name;
-        this.fullname = fullname;
-        this.url = url;
-        this.description = description;
+        this.gravity = gravity;
+        this.terrain = terrain;
     }
 
 }
