@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
         clickToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
         clickToast.show();
     }
+
     public class SWQueryTask extends AsyncTask<URL, Void, String> {
 
         @Override
@@ -70,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
         @Override
         protected void onPostExecute(String s) {
             requestProgress.setVisibility(View.INVISIBLE);
-            Log.i("error", "texto " + s);
+            Log.i("item", s);
             if (s != null) {
                 try {
                     PlanetEntity[] parsedApiOutput = PlanetsJsonUtils.parseJson(s);
                     adapter.setRepoData(parsedApiOutput);
+                    Log.i("entrea al try", s);
+                    Log.i("planetEntity", parsedApiOutput.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -97,25 +101,23 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
         int itemId = item.getItemId();
 
         if (itemId == R.id.search) {
-
             URL swUrl = NetworkUtils.buildUrl(searchBox.getText().toString());
             urlDisplay.setText(swUrl.toString());
 
             Log.e("a", swUrl.toString());
             new SWQueryTask().execute(swUrl);
-
-        }
-        if (itemId == R.id.clear) {
+        } else {
             urlDisplay.setText("");
-            errorDisplay.setVisibility(View.INVISIBLE);
+            adapter = new RepoAdapter(this);
+            repoList.setAdapter(adapter);
+            //errorDisplay.setVisibility(View.INVISIBLE);
         }
         return true;
     }
 
     private void showJsonData() {
-        //errorDisplay.setVisibility(View.INVISIBLE);
-        searchResults.setVisibility(View.VISIBLE);
-        Log.e("resultado", searchResults.toString());
+        errorDisplay.setVisibility(View.INVISIBLE);
+        //searchResults.setVisibility(View.VISIBLE);
     }
     private void showErrorMessage() {
         //searchResults.setVisibility(View.INVISIBLE);
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements RepoAdapter.ListI
         setContentView(R.layout.activity_main);
         searchBox = (EditText)findViewById(R.id.search_box);
         urlDisplay = (TextView) findViewById(R.id.url_display);
-        searchResults = (TextView) findViewById(R.id.sw_search_results);
+
         errorDisplay = (TextView) findViewById(R.id.error_display);
 
         repoList = (RecyclerView) findViewById(R.id.rv_responses);

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="sw_search_results" type="id" />
-    <item name="planetname" type="id" />
-    <item name="clear" type="id" />
-    <item name="planet_gravity" type="id" />
-    <item name="planet_terrain" type="id" />
-</resources>

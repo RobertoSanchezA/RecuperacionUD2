@@ -12,21 +12,19 @@ import java.util.Scanner;
 
 public class NetworkUtils {
     //https://swapi.dev/api/planets/1/?format=wookiee
-    final static String SWAPI_BASE_URL = "http://swapi.dev/api/planets";
+    final static String SWAPI_BASE_URL = "https://swapi.dev/api/planets";
     final static String SORT = "format";
     final static String SORT_BY = "json";
 
     public static URL buildUrl(String swSearch) {
         Uri builder = null;
-        Log.e("juan", swSearch);
+        Log.e("intro", swSearch);
         if (!swSearch.isEmpty()) {
             builder = Uri.parse(SWAPI_BASE_URL).buildUpon()
-                    .appendEncodedPath(swSearch + "/")
+                    .appendPath(swSearch)
                     .appendQueryParameter(SORT, SORT_BY)
                     .build();
-            
-        }
-        if(swSearch.isEmpty()) {
+        } else {
             builder = Uri.parse(SWAPI_BASE_URL).buildUpon()
                     .appendQueryParameter(SORT, SORT_BY)
                     .build();

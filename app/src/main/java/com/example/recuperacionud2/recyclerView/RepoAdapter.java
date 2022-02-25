@@ -44,7 +44,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RepoViewHolder holder, int position) {
-        Log.d(TAG, "#" + position);
+
         PlanetEntity repo = repoData[position];
         holder.bind(repo);
     }
@@ -67,16 +67,15 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.RepoViewHolder
 
         public RepoViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.planetname);
-            gravity = (TextView) itemView.findViewById(R.id.planet_gravity);
-            terrain = (TextView) itemView.findViewById(R.id.planet_terrain);
+            name = (TextView) itemView.findViewById(R.id.name);
+            gravity = (TextView) itemView.findViewById(R.id.gravity);
+            terrain = (TextView) itemView.findViewById(R.id.terrain);
             itemView.setOnClickListener(this);
         }
 
         void bind(PlanetEntity planet) {
-
             name.setText(planet.name);
-            gravity.setText((planet.gravity));
+            gravity.setText(planet.gravity);
             terrain.setText(planet.terrain);
         }
 

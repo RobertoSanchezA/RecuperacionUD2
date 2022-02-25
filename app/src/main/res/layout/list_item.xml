@@ -2,32 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
-
+    android:layout_height="match_parent"
+    android:padding="18dp">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2">
+        android:layout_gravity="center"
+        android:layout_weight="9">
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/SWAPI_url_here"
+            android:layout_height="wrap_content"
+            android:text="Planet name"
             android:textSize="18sp"/>
-
+        <TextView
+            android:id="@+id/gravity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Planet gravity"
+            android:textSize="12sp" />
         <TextView
             android:id="@+id/terrain"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/SWAPI_url_here"
-            android:textSize="18sp"/>
+            android:text="Planet terrain"
+            android:textSize="12sp" />
+
     </LinearLayout>
-    <TextView
-        android:id="@+id/gravity"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="@string/SWAPI_url_here"
-        android:textSize="18sp"/>
+
 </LinearLayout>
